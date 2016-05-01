@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Let's Chill</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="datepick/jquery.datepick.css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/scrolling-nav.css">
+
+    <!--    <script src="datepick/jquery.plugin.js"></script>-->
+    <!--    <script src="datepick/jquery.datepick.js"></script>-->
+
+    <!--    <?php require 'OAuth.php';?>-->
+
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/jquery.easing.min.js" async></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src="js/require.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '777551015709326',
+                xfbml: true,
+                version: 'v2.6'
+            });
+        };
+
+        // Facebook JS SDK
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        //this is to initialize the 
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 'my_app_id',
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true, // parse social plugins on this page
+                version: 'v2.1' // use version 2.1
+            });
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML = 'User id, ' + response.id + '!';
+                document.getElementById('status1').innerHTML = 'User name, ' + response.name + '!';
+            });
+
+            //the sort function to sort the list of friends 
+            function sortMethod(a, b) {
+                var x = a.name.toLowerCase();
+                var y = b.name.toLowerCase();
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            }
+
+            // now to get friends where my problem is found
+            //var limit = 10;
+            FB.api('/me/friends', function (response) {
+                var result_holder = document.getElementById('result_friends');
+                var friend_data = response.data.sort(sortMethod);
+                var results = '';
+                for (var i = 0; i < friend_data.length; i++) {
+                    results += '<div><img src="https://graph.facebook.com/' + friend_data[i].id + '/picture">' + friend_data[i].name + '</div>';
+                }
+                // and display them at our holder element
+                result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + results;
+            });
+
+        }
+    </script>
+
+    <!----------------------------------------------------->
+
+    <div id="jumbotron" class="jumbotron">
+        <div class="jumbotron-caption">
+
+            <div class="jumbotop">
+                <h2>Let's Chill</h2>
+            </div>
+
+            <div class="jumbobottom">
+                <h3>Suck at making plans?</h3>
+                <button id="planbutton" type="button" class="btn btn-primary">
+                    <a class="page-scroll" href="#makeplan">Plan your Chill
+                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="makeplan" class="wrap container text-center">
+
+        <div class="top-row">
+            <div class="col-sm-6">
+                <h3>Who?</h3>
+                <div>
+                    <form>
+                        <fieldset class="form-group">
+                            <input class="form-control" id="who" placeholder="Who you tryna chill with?">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3>What?</h3>
+                <div>
+                    <form>
+                        <fieldset class="form-group">
+                            <input class="form-control" id="what" placeholder="What you tryna do?">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="col-sm-6">
+                <h3>Where?</h3>
+                <div>
+                    <form>
+                        <fieldset class="form-group">
+                            <input class="form-control" id="where" placeholder="Where y'all tryna chill?">
+                        </fieldset>
+                        <div id="map">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h3>When?</h3>
+                <p style="text-align:center">When y'all tryna chill?</p>
+                <div id="datepicker"></div>
+                <div id="dates-chosen">
+                    <p class="dates-chosen"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 text-center" id="lets-chill">
+            <button type="button" class="btn btn-primary" onclick="createChill()">
+                <a class="page-scroll" href="#results">Let's Chill</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-sm-12 wrap" id="results">
+
+        <h3 style="padding-bottom:10px">Your Chill is ready!</h3>
+
+        <div class="outer-col col-sm-6">
+            <div class="col-sm-12" id="mychill-where">
+                <!-- Map-->
+
+            </div>
+        </div>
+
+        <div class="right-col outer-col col-sm-6">
+            <div class="inner-col col-sm-12 " id="mychill-wheretext">
+                <h3>You're hanging out at</h3>
+                <p>PLACE PLACEHOLDER</p>
+            </div>
+
+            <div class="inner-col col-sm-12" id="mychill-who">
+                <h3>with</h3>
+                <p>PEOPLE PLACEHOLDER</p>
+            </div>
+
+            <div class="inner-col col-sm-12" id="mychill-when">
+                <h3>on</h3>
+                <p>TIME PLACEHOLDER</p>
+            </div>
+
+            <div class="inner-col col-sm-12">
+                <button type="button" class="btn btn-success">
+                    Message chillers.
+                </button>
+            </div>
+
+        </div>
+
+        <div class="re-chill col-sm-12 text-center">
+            <button type="button" class="btn btn-primary">
+                <a class="page-scroll" href="#makeplan">Re-chill</a>
+            </button>
+        </div>
+
+        <div>
+            <h3 class="submessage" style="margin-top:15px">A social network for the socially lazy.</h3>
+            <p class="us" style="text-align: center"> Anshul Aggarwal | Bibek Ghimire | CJ Ordog | Sahil Gandhi</p>
+        </div>
+        
+        <div id="like-share" class="col-sm-12">
+
+            <div id="status"></div>
+            <div id="status1"></div>
+            <div id="fb-root"></div>
+
+            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true" data-size="large">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="backtotop">
+        <a class="page-scroll" href="#jumbotron">
+            Back to top.
+        </a>
+    </div>
+
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRgivJFTGFp-LGJ1dNdWXxsQbBry0jSCw&libraries=places"></script>
+
+    <!--    <script src="datepick/jquery.plugin.js"></script>-->
+
+    <!-- For Datepicker -->
+    <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+    <script type="text/maps" src="js/map.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/react" src="js/list.js"></script>
+
+    <!--
+     Custom Theme JavaScript 
+    <script src="js/creative.js"></script>
+-->
+
+
+</body>
+
+</html>

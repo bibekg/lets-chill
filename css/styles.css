@@ -1,0 +1,212 @@
+#datepicker {
+    margin-bottom: 15px;
+}
+
+.dates-chosen {
+    font-size: 11px;
+    color: rgba(150, 150, 150, 0.7);
+}
+
+.re-chill {
+    padding-bottom: 15px;
+    bottom: 5px;
+}
+
+.us {
+    font-size: 11px;
+    color: rgba(150, 150, 150, 0.7);
+}
+
+/*
+.jumbotop {
+    top: 20%;   
+}
+
+.jumbobottom {
+    bottom: 10%;
+}
+*/
+
+.jumbotron-caption {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    margin 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+#like-share {
+    position: fixed;
+    left: 4px;
+    bottom: 4px;
+}
+
+p {
+    font-size: 16px;
+    text-color: #000000;
+}
+
+#makeplan .top-row {
+    margin-bottom: 40vh;
+}
+
+#lets-chill {
+    margin-top: 40px;
+}
+
+#results {
+    height: 100vh;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+#mychill-where {
+    height: 65vh;
+}
+
+.outer-col {
+    height: 65vh;
+    text-align: center;
+    width: 50%;
+}
+
+.right-col {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.inner-col {
+    top: 50px;
+}
+
+.backtotop {
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+}
+
+h1 h2 h3 p a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submessage {
+    font-size: 16px;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+div.wrap {
+    height: 100%;
+    overflow: hidden;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    padding-bottom: 30px;
+    overflow: hidden;
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+#makeplan {
+    margin-bottom: 60px;
+    height: 100vh;
+}
+
+.navbar {
+    min-height: 20px;
+}
+
+.navbar-brand {
+    padding: 10;
+    height: 30px;
+    line-height: 20px;
+}
+
+a.page-scroll {
+    color: #ffffff;
+}
+
+
+/* Add a gray background color and some padding to the footer */
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+.jumbotron {
+    position: relative;
+    background: #000 url("../images/squ.jpg") center center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.navbar .nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(90, 110, 200, 1);
+}
+
+.jumbotron h2 {
+    font-size: 120px;
+    color: #69D2E7;
+    text-shadow: 2px 2px #000000;
+}
+
+.jumbotron h3 {
+    font-size: 40px;
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+}
+
+.jumbotron-caption img {
+    position: relative;
+    margin: 0 auto;
+}
+
+label {
+    text-align: left;
+}
+
+.lets-chill-button {
+    margin: 0 auto;
+}
+
+.ui-datepicker {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.ui-datepicker-group {
+    width: 50%;
+    display: inline-block;
+}
+
+.ui-datepicker-calendar {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.backtotop a {
+    color: rgba(90, 110, 200, 1);
+}
